@@ -1,16 +1,16 @@
 % for landscape posters, use "a4paper, landscape"
-\documentclass[a4paper]{article}
+\documentclass[a4paper, landscape]{article}
 \usepackage{better_poster}
 
 
 % ---- fill in from here
 % poster size - this will scale the poster to the given size.
 % for landscape posters add ", landscape" to the postersize command.
-\postersize{a0paper}
+\postersize{a0paper, landscape}
 
 % authors
-\title{Clouddrift, improving analysis and manipulation of large lagrangian datasets}
-\author{Kevin Santana}
+\title{Accelerating the use of Lagrangian data with Clouddrift}
+\author{Shane Elipot, Philippe Miron, Milan Curcic, Kevin Santana}
 
 % type of poster: [exp]erimental results, [methods], [theory]
 % Disclaimer: the original classification had "study" and "intervention" as separate categories. I group them under experimental results.
@@ -20,55 +20,47 @@
 
 % main point of your study
 \makefinding{
-Adapting \textbf{large lagrangian datasets} into \textbf{zarr archives}, improves data engineering and analysis efficiency, \textbf{encouraging} analysis experimentation!
+Organizing \textbf{lagrangian datasets} into \textbf{ragged arrays} eases data engineering and analysis!
 }
 
 % the main text of your poster goes here
 \makemain{
-    % you can have 1 or 2 columns
     \raggedcolumns
-    \begin{multicols}{3}
-        \section{Intro}
+    \begin{multicols}{2}
+        \section{Introduction}
         \begin{compactitem}
-            \item Lagrangian data typically refers to oceanic and atmosphere information acquired by observing platforms drifting with the flow they are embedded within.
+            \item Lagrangian data sometimes refers to oceanic and atmosphere information acquired by observing platforms drifting within the flow they are embedded in.
         \end{compactitem}
-        
-        \section{Datasets available}
+
+        \section{Datasets}
         \begin{compactitem}
             \item MoSAiC, sea ice trajectories
             \item GDP, ocean drifter trajectories
             \item HURDAT2, cyclone trajectories
+            \item Many more...
         \end{compactitem}
-        
-        \section{Scope And Key Features}
+
+        \columnbreak
+
+        \section{Scope / Features}
         \begin{compactitem}
-            \item Working with contiguous ragged array representations of data
-            \item Delivering functions and methods to perform scientific analysis of Lagrangian data
-            \item Processing publicly available Lagrangian datasets into the common ragged array data structure
+            \item Working with trajectories of varying length
+            \item Provide functions and methods for scientific analysis of Lagrangian data
+            \item Process publicly available Lagrangian datasets into ragged array zarr archives
             \item Making cloud-optimized ragged array datasets easily accessible
         \end{compactitem}
-    
-    \end{multicols}
-}
 
-% If you have extra figures or data to show
-\makeextracolumn{
-    Ragged Array Data Structure
-    
-    \includegraphics[width=0.5\linewidth]{ragged-array.png}
-    
-    \begin{itemize}
-    \setlength\itemsep{0.1em}
-        \item Clouddrift organizes data variables within a dataset in the Ragged Array data structure 
-        \item A Ragged Array is organized where each \underline{particle/trajectory/row} associated observations are concatenated in order resulting in a 1-d array.
-        \item A resulting metadata variable stores the rowsize of each individual \underline{particle/trajectory/row}.
-    \end{itemize}
+        % \columnbreak
+
+        \section{Data Structure}
+        \includegraphics[width=0.35\textwidth, height=0.18\textheight]{ragged-array.png}
+    \end{multicols}
 }
 
 % footer
 % generate qr code from https://www.qr-code-generator.com/ and replace qr_code.png
 % default: barcode on the left
-\makealtfooter{images/um-logo.png}{images/qr-code.png}
+\makefooter{images/um-logo.png}{images/qr-code.png}
 
 % replace with this like for barcode on the right
 % \makealtfooter{images/qr-code.png}
